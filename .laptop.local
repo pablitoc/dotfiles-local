@@ -1,0 +1,39 @@
+#!/bin/sh
+
+brew tap caskroom/cask
+brew install brew-cask
+
+brew cask install chefdk
+brew cask isntall --appdir="/Applications" atom
+brew cask install --appdir="/Applications" google-chrome
+brew cask install --appdir="/Applications" spotify
+brew cask install --appdir="/Applications" spotify-notifications
+brew cask install --appdir="/Applications" virtualbox
+brew cask install --appdir="/Applications" vagrant
+brew cask install --appdir="/Applications" alfred
+brew cask install --appdir="~/Applications" vlc
+# brew cask install --appdir="~/Applications" docker
+# brew cask install --appdir="~/Applications" java
+
+# Link Cask Apps to Alfred
+brew cask alfred link
+
+brew bundle --file=- <<EOF
+brew "awscli"
+brew "terraform"
+brew "rcm"
+brew "htop"
+brew "namebench"
+EOF
+
+fancy_echo "Cleaning up old Homebrew formulae ..."
+brew cleanup --force
+brew cask cleanup
+rm -f -r /Library/Caches/Homebrew/*
+
+gem install aws-mfa
+
+if [ -r "$HOME/.rcrc" ]; then
+  fancy_echo "Updating dotfiles ..."
+  rcup
+fi

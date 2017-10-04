@@ -1,0 +1,10 @@
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+export SRC_DIR='~/src'
+export DOTFILES_DIR="$HOME/dotfiles-local"
+
+if which pyenv &>/dev/null ; then
+  eval "$(pyenv init -)"
+fi
+
+eval $(aws-mfa)
