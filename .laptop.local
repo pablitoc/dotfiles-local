@@ -14,7 +14,14 @@ brew cask install --appdir="/Applications" alfred
 brew cask install --appdir="/Applications" vlc
 # brew cask install --appdir="/Applications" docker
 brew cask install --appdir="/Applications" 1password
-# brew cask install --appdir="~/Applications" java
+brew cask install --appdir="/Applications" macdown
+brew cask install --appdir="/Applications" postman
+
+# Install Jmeter and Java 8
+# Java 9 is not yet supported
+brew tap caskroom/versions
+brew cask install --appdir="~/Applications" java8
+brew install jmeter --with-plugins
 
 # Link Cask Apps to Alfred
 #brew cask alfred link
