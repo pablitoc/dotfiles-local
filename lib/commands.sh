@@ -58,9 +58,7 @@ alias knh='> ~/.ssh/known_hosts'
 # alias iprenew='sudo ipconfig set en0 DHCP'
 
 makekeys () {
-  echo "Please enter the Project Name"
-  read projectname
-  ssh-keygen -f $projectname -t rsa -b 4096 -C "$projectname" -N ''
+  ssh-keygen -f $1 -t rsa -b 4096 -C "$2" -N ''
 
 }
 

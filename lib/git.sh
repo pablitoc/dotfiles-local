@@ -1,6 +1,7 @@
 # ++++++++++++++++++++++++++++++++++
 # General
 # ++++++++++++++++++++++++++++++++++
+alias git=hub
 
 alias gpsh='git push'
 alias gpshom='git push origin master'
@@ -28,13 +29,14 @@ alias gcods='git checkout deploy/stage'
 alias gb='git branch'
 alias gbl='git branch --list'
 alias gr='git rm'
+alias gpr='git pull-request -b master'
 
 gitcleanup () {
   git fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
 }
 
 grao () {
-  git remote add origin git@github.com:crushlovely/$1.git
+  git remote add origin git@github.com:autogravity/$1.git
 }
 
 # Remove a local branch and re-track it from origin

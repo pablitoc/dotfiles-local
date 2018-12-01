@@ -1,5 +1,0 @@
-for script in $DOTFILES_DIR/lib/*.sh ; do
-  if [ -r $script ] ; then
-    . $script
-  fi
-done

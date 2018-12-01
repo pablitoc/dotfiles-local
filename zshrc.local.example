@@ -1,0 +1,55 @@
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+export SRC_DIR='/Users/pablocastillo/src'
+export DOTFILES_DIR="$HOME/dotfiles-local"
+export EDITOR="atom --wait --new-window"
+export VISUAL="atom --wait --new-window"
+
+export HOMEBREW_GITHUB_API_TOKEN=""
+export DO_API_KEY=""
+
+export VAULT_ADDR="https://vault.autogravity.com"
+export VAULT_GITHUB_TOKEN=""
+export VAULT_API_TOKEN=""
+export TF_VAR_do_token=$DO_API_KEY
+export TF_VAR_VAULT_ADDR=$VAULT_ADDR
+export TF_VAR_VAULT_GITHUB_TOKEN=$VAULT_GITHUB_TOKEN
+export TF_CLI_ARGS_plan="-var-file=$SRC_DIR/ops-aws/terraform/global.tfvars -parallelism=500"
+export TF_CLI_ARGS_destroy="-var-file=$SRC_DIR/ops-aws/terraform/global.tfvars -parallelism=500"
+export TF_CLI_ARGS_apply="-var-file=$SRC_DIR/ops-aws/terraform/global.tfvars -parallelism=500"
+export TF_CLI_ARGS_validate="-var-file=$SRC_DIR/ops-aws/terraform/global.tfvars"
+export JVM_ARGS="-Xms1024m -Xmx4096m"
+
+bindkey -e
+bindkey '[C' forward-word
+bindkey '[D' backward-word
+
+eval "$(nodenv init -)"
+
+if which pyenv &>/dev/null ; then
+  eval "$(pyenv init -)"
+fi
+
+if aws-mfa | grep -e AWS_SESSION_TOKEN -e AWS_SECURITY_TOKEN &>/dev/null; then
+  eval $(aws-mfa)
+else
+  aws-mfa
+fi
+
+if vault token lookup &>/dev/null; then
+  :
+else
+  vault login -method=github token=$VAULT_GITHUB_TOKEN
+fi
+
+
+# Temp
+#export PROJECT_ID=$(gcloud config get-value project)
+
+#export COMPUTE_REGION=us-west2
+#gcloud config set compute/region $COMPUTE_REGION
+
+#export COMPUTE_ZONE=us-west2-b
+#gcloud config set compute/zone $COMPUTE_ZONE

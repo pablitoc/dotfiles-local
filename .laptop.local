@@ -1,38 +1,60 @@
 #!/bin/sh
 
 brew tap caskroom/cask
+brew tap caskroom/versions
 #brew install brew-cask
 
 brew cask install chefdk
-brew cask install --appdir="/Applications" atom
-#brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" spotify-notifications
-brew cask install --appdir="/Applications" virtualbox
-brew cask install --appdir="/Applications" vagrant
-brew cask install --appdir="/Applications" alfred
-brew cask install --appdir="/Applications" vlc
-# brew cask install --appdir="/Applications" docker
+brew cask install google-cloud-sdk
 brew cask install --appdir="/Applications" 1password
+brew cask install --appdir="/Applications" alfred
+brew cask install --appdir="/Applications" atom
+brew cask install --appdir="/Applications" bettertouchtool
+brew cask install --appdir="/Applications" docker
+brew cask install --appdir="/Applications" firefox
+brew cask install --appdir="/Applications" gimp
 brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" postman
-
-# Install Jmeter and Java 8
-# Java 9 is not yet supported
-brew tap caskroom/versions
+brew cask install --appdir="/Applications" spotify
+brew cask install --appdir="/Applications" vagrant
+brew cask install --appdir="/Applications" virtualbox
+brew cask install --appdir="/Applications" virtualbox-extension-pack
+brew cask install --appdir="/Applications" vlc
+brew cask install --appdir="~/Applications" chefdk
+brew cask install --appdir="~/Applications" google-cloud-sdk
 brew cask install --appdir="~/Applications" java8
-brew install jmeter --with-plugins
+brew cask install --appdir="~/Applications" mysql-shell
+brew cask install --appdir="~/Applications" sqlworkbenchj
+brew cask install --appdir="~/Applications" vagrant-manager
+brew cask install --appdir="~/Applications" whatsapp
 
 # Link Cask Apps to Alfred
 #brew cask alfred link
 
 brew bundle --file=- <<EOF
+brew "jmeter --with-plugins"
+brew "ansible"
+brew "ansible"
+brew "ansible@2.0"
 brew "awscli"
-brew "terraform"
-brew "rcm"
+brew "bzt"
 brew "htop"
+brew "jmeter"
+brew "jq"
+brew "kops"
+brew "kubernetes-cli"
+brew "kubernetes-helm"
 brew "namebench"
+brew "nmap"
+brew "nodenv"
+brew "packer"
+brew "pgcli"
 brew "pyenv"
+brew "rancher-cli"
+brew "rancher-compose"
+brew "rcm"
+brew "terraform"
+brew "vault"
 EOF
 
 fancy_echo "Cleaning up old Homebrew formulae ..."

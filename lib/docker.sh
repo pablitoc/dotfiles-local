@@ -4,7 +4,7 @@ doclean () {
 }
 # Removes old images
 docleanimages () {
-  docker images | grep -e months -e weeks | grep -v passenger | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi
+  docker images -a | tr -s ' ' | cut -d ' ' -f 3 | xargs docker rmi
 }
 # Remove all containers
 docleancontainers () {
@@ -13,6 +13,13 @@ docleancontainers () {
 # Remove VFS directory of
 docleanvfs () {
   docker volume rm $(docker volume ls -qf dangling=true)
+}
+# Runs all containers defined in your docker-compose file. If it is needed – rebuild and remove old unused containers.
+docleanbuild () {
+  docker-compose up -d --build --remove-orphans
+}
+docleancompose () {
+  docker-compose stop && docker-compose rm -f && docker-compose rm -v
 }
 # Regenerate TLS connection certs, requires confirmation
 docrecert () {
@@ -31,4 +38,16 @@ docstart () {
 docstop () {
   # Start Virtual Machine for Docker
   docker-machine stop
+}
+
+doclogin () {
+  eval $(aws ecr get-login --no-include-email --region us-west-2)
+}
+
+docdf (){
+  docker system df
+}
+
+docprune (){
+  docker image prune -a -f
 }
