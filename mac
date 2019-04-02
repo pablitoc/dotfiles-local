@@ -114,6 +114,7 @@ brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
+tap "caskroom/cask"
 
 # Unix
 brew "universal-ctags", args: ["HEAD"]
@@ -135,10 +136,14 @@ brew "imagemagick"
 
 # Programming languages and package managers
 brew "libyaml" # should come after openssl
-brew "node"
+brew "nodenv"
 brew "rbenv"
 brew "ruby-build"
+brew "node-build"
+brew "python-build"
 brew "yarn"
+brew "pyenv"
+cask "gpg-suite"
 EOF
 
 

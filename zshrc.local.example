@@ -1,6 +1,9 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:/usr/local/opt/mysql@5.7/bin:/usr/local/opt/mysql-client/bin:/Users/pablocastillo/src/ansible/bin:$PATH"
+export PYTHONPATH="/Users/pablocastillo/src/ansible/lib"
+#export MANPATH="$PATH:/Users/pablocastillo/src/ansible/docs/man"
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
 
 export SRC_DIR='/Users/pablocastillo/src'
 export DOTFILES_DIR="$HOME/dotfiles-local"
@@ -32,24 +35,5 @@ if which pyenv &>/dev/null ; then
   eval "$(pyenv init -)"
 fi
 
-if aws-mfa | grep -e AWS_SESSION_TOKEN -e AWS_SECURITY_TOKEN &>/dev/null; then
-  eval $(aws-mfa)
-else
-  aws-mfa
-fi
-
-if vault token lookup &>/dev/null; then
-  :
-else
-  vault login -method=github token=$VAULT_GITHUB_TOKEN
-fi
-
-
-# Temp
-#export PROJECT_ID=$(gcloud config get-value project)
-
-#export COMPUTE_REGION=us-west2
-#gcloud config set compute/region $COMPUTE_REGION
-
-#export COMPUTE_ZONE=us-west2-b
-#gcloud config set compute/zone $COMPUTE_ZONE
+export PATH="$HOME/.bin:$PATH"
+eval "$(rbenv init - --no-rehash)"

@@ -42,6 +42,12 @@ mkfile() {
 mkdir -p -- "$1" && touch -- "$1"/"$2"
 }
 
+# Chef & Rancher Clean-Up
+# knife node delete -y & knife client delete -y & rancher deactivate & rancher rm
+chefclr() {
+knife node delete -y $input & knife client delete -y $input & rancher deactivate $input & rancher rm $input
+}
+
 # ++++++++++++++++++++++++++++++++++
 # SSH
 # ++++++++++++++++++++++++++++++++++
@@ -58,8 +64,9 @@ alias knh='> ~/.ssh/known_hosts'
 # alias iprenew='sudo ipconfig set en0 DHCP'
 
 makekeys () {
+  # echo "Please enter the Project Name"
+  # read projectname
   ssh-keygen -f $1 -t rsa -b 4096 -C "$2" -N ''
-
 }
 
 catssl () {
