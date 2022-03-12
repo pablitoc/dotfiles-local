@@ -31,11 +31,11 @@ untarfile () {
 
 # Use RSYNC to copy files and remove source files
 rmove () {
-rsync -avhz --progress $1 $2 --remove-source-files -d --recursive && rm -rf $1
+rsync -avh --progress $1 $2 --remove-source-files -d --recursive && rm -rf $1
   }
 
 rcopy () {
-rsync -avhz --progress $1 $2
+rsync -avh --progress $1 $2
   }
 
 mkfile() {

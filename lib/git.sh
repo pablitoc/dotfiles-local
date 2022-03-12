@@ -4,10 +4,10 @@
 alias git=hub
 
 alias gpsh='git push'
-alias gpshom='git push origin master'
+alias gpshom='git push origin main'
 
 alias gpl='git pull'
-alias gplom='git pull origin master'
+alias gplom='git pull origin main'
 
 alias gl='git log'
 
@@ -20,32 +20,32 @@ alias gc='git commit -m'
 alias gco='git checkout'
 
 alias gm='git merge'
-alias gmm='git merge master'
+alias gmm='git merge main'
 
-alias gcom='git checkout master'
+alias gcom='git checkout main'
 alias gcodl='git checkout deploy/live'
 alias gcods='git checkout deploy/stage'
 
 alias gb='git branch'
 alias gbl='git branch --list'
 alias gr='git rm'
-alias gpr='git pull-request -b master'
+alias gpr='git pull-request -b main'
 
 gpr () {
-  git pull-request -b master -r $1
+ git pull-request -b $1 -a pablitoc -r $2
 }
 
 gitcleanup () {
   git fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
 }
 
-grao () {
-  git remote add origin git@github.com:autogravity/$1.git
-}
+#grao () {
+#  git remote add origin git@github.com:autogravity/$1.git
+#}
 
 # Remove a local branch and re-track it from origin
 gfb () {
-  git checkout master
+  git checkout main
   git branch -D $1
   git fetch origin
   git branch --track $1 origin/$1

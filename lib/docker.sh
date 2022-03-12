@@ -41,7 +41,7 @@ docstop () {
 }
 
 doclogin () {
-  eval $(aws ecr get-login --no-include-email --region us-west-2)
+  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 180974838604.dkr.ecr.us-west-2.amazonaws.com
 }
 
 docdf (){

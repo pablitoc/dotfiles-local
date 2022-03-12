@@ -9,7 +9,7 @@ sk () {
   echo "SSH keys successfully created."
 }
 
-removeFromKnownHosts() {
+cleanknownhost() {
   sed -i~ "$1 d" ~/.ssh/known_hosts;
 }
 

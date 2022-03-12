@@ -1,6 +1,7 @@
 csrgen () {
-  openssl genrsa -des3 -out $1.key 4096
-  openssl req -new -key $1.key -out $1.csr
+  openssl genrsa -des3 -out $1.key 2048
+  openssl req -new -x509 -nodes -sha256 -key $1.key -out $1.crt
+  # openssl req -new -key $1.key -out $1.csr
 }
 
 rmkeypassphrase() {
