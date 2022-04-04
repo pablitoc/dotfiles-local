@@ -5,15 +5,18 @@ brew tap homebrew/cask
 #brew install brew-cask
 
 #brew cask install --appdir="~/Applications" 1password
-brew install --appdir="~/Applications" alfred
+# brew install --appdir="~/Applications" alfred
 brew install --appdir="~/Applications" atom
-brew install --appdir="~/Applications" bettertouchtool
+# brew install --appdir="~/Applications" bettertouchtool
 brew install --appdir="~/Applications" docker
 brew install --appdir="~/Applications" firefox
 #brew cask install --appdir="~/Applications" gimp
 brew install --appdir="~/Applications" macdown
 brew install --appdir="~/Applications" postman
 brew install --appdir="~/Applications" spotify
+brew install --appdir="~/Applications" bloomrpc
+brew install --appdir="~/Applications" aws-vpn-client
+
 #brew cask install --appdir="~/Applications" vagrant
 #brew cask install --appdir="~/Applications" virtualbox
 #brew cask install --appdir="~/Applications" virtualbox-extension-pack
@@ -44,14 +47,20 @@ brew "nmap"
 brew "packer"
 brew "pgcli"
 brew "pyenv"
+brew "nodenv"
+brew "tfenv"
 #brew "rancher-cli"
 #brew "rancher-compose"
 brew "rbenv-chefdk"
-#brew "terraform"
 brew "vault"
 brew "zlib"
 brew "aws-iam-authenticator"
+brew "grpcurl"
 EOF
+
+##npm install
+#artillery
+#artillery-engine-grpc
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
