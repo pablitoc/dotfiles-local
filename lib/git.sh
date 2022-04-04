@@ -29,10 +29,10 @@ alias gcods='git checkout deploy/stage'
 alias gb='git branch'
 alias gbl='git branch --list'
 alias gr='git rm'
-alias gpr='git pull-request -b main'
+# alias gpr='hub pull-request -b main'
 
 gpr () {
- git pull-request -b $1 -a pablitoc -r $2
+ hub pull-request -b $1 -a pablitoc -r $2
 }
 
 gitcleanup () {

@@ -1,30 +1,30 @@
 #!/bin/sh
 
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask
+#brew tap homebrew/versions
 #brew install brew-cask
 
-brew cask install --appdir="~/Applications" 1password
-brew cask install --appdir="~/Applications" alfred
-brew cask install --appdir="~/Applications" atom
-brew cask install --appdir="~/Applications" bettertouchtool
-brew cask install --appdir="~/Applications" docker
-brew cask install --appdir="~/Applications" firefox
-brew cask install --appdir="~/Applications" gimp
-brew cask install --appdir="~/Applications" macdown
-brew cask install --appdir="~/Applications" postman
-brew cask install --appdir="~/Applications" spotify
-brew cask install --appdir="~/Applications" vagrant
-brew cask install --appdir="~/Applications" virtualbox
-brew cask install --appdir="~/Applications" virtualbox-extension-pack
-brew cask install --appdir="~/Applications" vlc
-brew cask install --appdir="~/Applications" chefdk
-brew cask install --appdir="~/Applications" google-cloud-sdk
-brew cask install --appdir="~/Applications" java8
-brew cask install --appdir="~/Applications" mysql-shell
-brew cask install --appdir="~/Applications" sqlworkbenchj
-brew cask install --appdir="~/Applications" vagrant-manager
-brew cask install --appdir="~/Applications" whatsapp
+#brew cask install --appdir="~/Applications" 1password
+brew install --appdir="~/Applications" alfred
+brew install --appdir="~/Applications" atom
+brew install --appdir="~/Applications" bettertouchtool
+brew install --appdir="~/Applications" docker
+brew install --appdir="~/Applications" firefox
+#brew cask install --appdir="~/Applications" gimp
+brew install --appdir="~/Applications" macdown
+brew install --appdir="~/Applications" postman
+brew install --appdir="~/Applications" spotify
+#brew cask install --appdir="~/Applications" vagrant
+#brew cask install --appdir="~/Applications" virtualbox
+#brew cask install --appdir="~/Applications" virtualbox-extension-pack
+#brew cask install --appdir="~/Applications" vlc
+#brew cask install --appdir="~/Applications" chefdk
+#brew cask install --appdir="~/Applications" google-cloud-sdk
+#brew install --appdir="~/Applications" java8
+#brew cask install --appdir="~/Applications" mysql-shell
+#brew cask install --appdir="~/Applications" sqlworkbenchj
+#brew cask install --appdir="~/Applications" vagrant-manager
+#brew cask install --appdir="~/Applications" whatsapp
 
 # Link Cask Apps to Alfred
 #brew cask alfred link
@@ -33,8 +33,8 @@ brew bundle --file=- <<EOF
 brew "awscli"
 brew "bzt"
 brew "htop"
-brew "jmeter --with-plugins"
-brew "jmeter"
+#brew "jmeter --with-plugins"
+#brew "jmeter"
 brew "jq"
 brew "kops"
 brew "kubernetes-cli"
@@ -44,18 +44,18 @@ brew "nmap"
 brew "packer"
 brew "pgcli"
 brew "pyenv"
-brew "rancher-cli"
-brew "rancher-compose"
+#brew "rancher-cli"
+#brew "rancher-compose"
 brew "rbenv-chefdk"
-brew "terraform"
+#brew "terraform"
 brew "vault"
 brew "zlib"
 brew "aws-iam-authenticator"
 EOF
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
-brew cleanup --force
-brew cask cleanup
+brew cleanup
+#brew cask cleanup
 rm -f -r /Library/Caches/Homebrew/*
 
 gem install aws-mfa

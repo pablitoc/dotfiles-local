@@ -1,9 +1,19 @@
 alias j='jekyll --server --auto'
 
 createtokens () {
-  echo APPLICATION_TOKEN=`ruby -rsecurerandom -e "puts test=SecureRandom.hex(64)"`
-  echo SECRET_KEY_BASE=`ruby -rsecurerandom -e "puts test=SecureRandom.hex(64)"`
-  echo SECRET_TOKEN=`ruby -rsecurerandom -e "puts test=SecureRandom.hex(64)"`
-  echo DEVISE_SECRET_KEY=`ruby -rsecurerandom -e "puts test=SecureRandom.hex(64)"`
-  echo DEVISE_PEPPER=`ruby -rsecurerandom -e "puts test=SecureRandom.hex(64)"`
+  echo cqe_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo customer_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo customer_support_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo dsot_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo event_broker_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo fleet_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo inspection_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo insurance_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo lightico_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo scheduler_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo spre_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo subscription_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo validation_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo vehicle_listing_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
+  echo zendesk_service_user=`ruby -rsecurerandom -e "puts test=SecureRandom.base64(12)"`
 }

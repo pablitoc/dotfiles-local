@@ -1,3 +1,23 @@
+tfdev (){
+  AWS_PROFILE=dev terraform $1
+}
+
+tfqa (){
+  AWS_PROFILE=qa terraform $1
+}
+
+tfstaging (){
+  AWS_PROFILE=staging terraform $1
+}
+
+tfprod (){
+  AWS_PROFILE=main terraform $1
+}
+
+tfmgmt (){
+  AWS_PROFILE=mgmt terraform $1
+}
+
 tftaint () {
 module=$1
 for resource in `terraform show | grep module | tr -d ':'`; do
