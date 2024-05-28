@@ -31,9 +31,9 @@ alias gbl='git branch --list'
 alias gr='git rm'
 # alias gpr='hub pull-request -b main'
 
-# gpr () {
-#  hub pull-request -b $1 -a pablitoc -r $2
-# }
+gprq () {
+ hub pull-request -b $1 -a pablitoc -m "$2"
+}
 
 gitcleanup () {
   git fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d

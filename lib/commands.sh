@@ -20,6 +20,10 @@ alias o='open'
 # Open this directory in the finder
 alias od='open .'
 
+killdock () {
+  kill 15 `ps aux | grep -i "[/]System/Library/CoreServices/Dock.app/Contents/MacOS/Dock" | awk '{print $2}'`
+}
+
 # Tar and Untar direcctories
 tarfile () {
   TODAY=`date "+%m-%d-%Y_%H%M%S"`

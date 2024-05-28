@@ -10,3 +10,31 @@ alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 
 kuse () {
   kubectl config use-context $1
 }
+
+kshnats () {
+  export INFO="$(k describe pods --all-namespaces -l app=$1 | grep -iw -e namespace -e Name)"
+  export POD="$(echo $INFO | grep -w Name | awk '{print $2}')"
+  export NAMESPACE="$(echo $INFO | grep -w Namespace | awk '{print $2}')"
+  kubectl exec -it $POD -n $NAMESPACE /bin/sh
+}
+
+ksh () {
+  export INFO="$(k describe pods --all-namespaces -l app.kubernetes.io/name=$1 | grep -iw -e namespace -e Name)"
+  export POD="$(echo $INFO | grep -w Name | awk '{print $2}')"
+  export NAMESPACE="$(echo $INFO | grep -w Namespace | awk '{print $2}')"
+  kubectl exec -it $POD -n $NAMESPACE /bin/sh
+}
+
+kcp () {
+  export INFO="$(k describe pods --all-namespaces -l app=$1 | grep -iw -e namespace -e Name)"
+  export POD="$(echo $INFO | grep -w Name | awk '{print $2}')"
+  export NAMESPACE="$(echo $INFO | grep -w Namespace | awk '{print $2}')"
+  kubectl cp $POD -n $NAMESPACE
+}
+
+delcrashedpods () {
+  k get pods | grep -e Crash -e Terminating | awk '{print $1}' | xargs -I {} kubectl delete --force pod {}
+}
+
+##helm
+# helm search repo external-dns/external-dns --versions

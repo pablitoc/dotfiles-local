@@ -1,21 +1,29 @@
+tfmain (){
+  AWS_PROFILE=main terraform "$1"
+}
+
 tfdev (){
-  AWS_PROFILE=dev terraform $1
+  AWS_PROFILE=dev terraform "$1"
 }
 
 tfqa (){
-  AWS_PROFILE=qa terraform $1
+  AWS_PROFILE=qa terraform "$1"
 }
 
 tfstaging (){
-  AWS_PROFILE=staging terraform $1
+  AWS_PROFILE=staging terraform "$1"
 }
 
 tfprod (){
-  AWS_PROFILE=main terraform $1
+  AWS_PROFILE=prod terraform "$1"
 }
 
 tfmgmt (){
-  AWS_PROFILE=mgmt terraform $1
+  AWS_PROFILE=mgmt terraform "$1"
+}
+
+tfaudit (){
+  AWS_PROFILE=audit terraform "$1"
 }
 
 tftaint () {

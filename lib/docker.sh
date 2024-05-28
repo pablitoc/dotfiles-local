@@ -41,7 +41,7 @@ docstop () {
 }
 
 doclogin () {
-  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 180974838604.dkr.ecr.us-west-2.amazonaws.com
+  aws ecr get-login-password --region us-west-2 --profile main | docker login --username AWS --password-stdin 180974838604.dkr.ecr.us-west-2.amazonaws.com
 }
 
 docdf (){
