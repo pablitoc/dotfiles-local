@@ -20,6 +20,8 @@ alias o='open'
 # Open this directory in the finder
 alias od='open .'
 
+alias vscode="open -a Visual\ Studio\ Code.app"
+
 killdock () {
   kill 15 `ps aux | grep -i "[/]System/Library/CoreServices/Dock.app/Contents/MacOS/Dock" | awk '{print $2}'`
 }
@@ -44,12 +46,6 @@ rsync -avh --progress $1 $2
 
 mkfile() {
 mkdir -p -- "$1" && touch -- "$1"/"$2"
-}
-
-# Chef & Rancher Clean-Up
-# knife node delete -y & knife client delete -y & rancher deactivate & rancher rm
-chefclr() {
-knife node delete -y $input & knife client delete -y $input & rancher deactivate $input & rancher rm $input
 }
 
 # ++++++++++++++++++++++++++++++++++

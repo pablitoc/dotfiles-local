@@ -9,7 +9,6 @@ loadansibledefaults () {
   unset ANSIBLE_CUSTOM_HOME
   unset ANSIBLE_CONFIG
   unset PYTHONPATH
-  export PATH="/Users/pabz/Android/sdk/platform-tools:/Users/pabz/Android/sdk/tools:/Applications/VMware OVF Tool:/usr/local/bin/git:/usr/local/heroku/bin:/opt/boxen/rbenv/shims:bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/ruby-build/bin:node_modules/.bin:/opt/boxen/nodenv/shims:/opt/boxen/nodenv/bin:/usr/local/bin:/usr/local/sbin:/opt/boxen/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/bin:/Users/pabz/.ec2/bin:/Applications/Postgres.app/Contents/Versions/latest/bin"
   export MANPATH="/usr/local/share/man:"
   # Set new environment
   source $BOXEN_SRC_DIR/ansible/hacking/env-setup -q

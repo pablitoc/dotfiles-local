@@ -41,9 +41,8 @@ docstop () {
 }
 
 doclogin () {
-  aws ecr get-login-password --region us-west-2 --profile main | docker login --username AWS --password-stdin 180974838604.dkr.ecr.us-west-2.amazonaws.com
+  aws ecr get-login-password --region us-west-2 --profile main | docker login --username AWS --password-stdin .dkr.ecr.us-west-2.amazonaws.com
 }
-
 docdf (){
   docker system df
 }
@@ -51,3 +50,19 @@ docdf (){
 docprune (){
   docker image prune -a -f
 }
+
+default_docker_machine() {
+  docker-machine ls | grep -Fq "default"
+}
+
+if ! default_docker_machine; then
+  docker-machine create --driver virtualbox default
+fi
+
+default_docker_machine_running() {
+  default_docker_machine | grep -Fq "Running"
+}
+
+if ! default_docker_machine_running; then
+  docker-machine start default
+fi
