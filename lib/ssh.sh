@@ -10,7 +10,7 @@ sk () {
 }
 
 cleanknownhost() {
-  sed -i~ "$1 d" ~/.ssh/known_hosts;
+  sed -i '' "/$1/d" ~/.ssh/known_hosts;
 }
 
 update_keys () {

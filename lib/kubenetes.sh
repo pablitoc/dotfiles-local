@@ -1,7 +1,7 @@
 # https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 # Kubernetes alias
-alias k=kubectl
-complete -F __start_kubectl k
+
+alias k='kubectl'
 
 # short alias to set/show context/namespace (only works for bash and bash-compatible shells, current context to be set before using kn to set namespace)
 alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
@@ -36,5 +36,6 @@ delcrashedpods () {
   k get pods | grep -e Crash -e Terminating | awk '{print $1}' | xargs -I {} kubectl delete --force pod {}
 }
 
-##helm
-# helm search repo external-dns/external-dns --versions
+helmsearch () {
+  helm search repo $1 --versions
+}

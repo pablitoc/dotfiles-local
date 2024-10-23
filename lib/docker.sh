@@ -41,8 +41,28 @@ docstop () {
 }
 
 doclogin () {
-  aws ecr get-login-password --region us-west-2 --profile main | docker login --username AWS --password-stdin .dkr.ecr.us-west-2.amazonaws.com
+  aws ecr get-login-password --region us-west-2 --no-verify-ssl --profile amibstackprod | docker login --username AWS --password-stdin 346334011463.dkr.ecr.us-west-2.amazonaws.com
 }
+
+docloginfra () {
+  aws ecr get-login-password --region us-west-2 --no-verify-ssl --profile arps-n2-infra-profile | docker login --username AWS --password-stdin 822854964954.dkr.ecr.us-west-2.amazonaws.com
+}
+
+docloginacrp () {
+  az acr login -n ssppaps1arpscr1.azurecr.io
+}
+
+docloginacrn () {
+  az acr login -n ssppans1arpscr1.azurecr.io
+}
+
+
+
+doclogit () {
+  export CR_PAT="PAT"
+  echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
+}
+
 docdf (){
   docker system df
 }
@@ -51,18 +71,18 @@ docprune (){
   docker image prune -a -f
 }
 
-default_docker_machine() {
-  docker-machine ls | grep -Fq "default"
-}
+# default_docker_machine() {
+#   docker-machine ls | grep -Fq "default"
+# }
 
-if ! default_docker_machine; then
-  docker-machine create --driver virtualbox default
-fi
+# if ! default_docker_machine; then
+#   docker-machine create --driver virtualbox default
+# fi
 
-default_docker_machine_running() {
-  default_docker_machine | grep -Fq "Running"
-}
+# default_docker_machine_running() {
+#   default_docker_machine | grep -Fq "Running"
+# }
 
-if ! default_docker_machine_running; then
-  docker-machine start default
-fi
+# if ! default_docker_machine_running; then
+#   docker-machine start default
+# fi

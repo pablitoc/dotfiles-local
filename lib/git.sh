@@ -4,10 +4,10 @@
 # alias git=hub
 
 alias gpsh='git push'
-alias gpshom='git push origin main'
+alias gpshom='git push origin master'
 
 alias gpl='git pull'
-alias gplom='git pull origin main'
+alias gplom='git pull origin master'
 
 alias gl='git log'
 
@@ -20,16 +20,16 @@ alias gc='git commit -m'
 alias gco='git checkout'
 
 alias gm='git merge'
-alias gmm='git merge main'
+alias gmm='git merge master'
 
-alias gcom='git checkout main'
+alias gcom='git checkout master'
 alias gcodl='git checkout deploy/live'
 alias gcods='git checkout deploy/stage'
 
 alias gb='git branch'
 alias gbl='git branch --list'
 alias gr='git rm'
-# alias gpr='hub pull-request -b main'
+# alias gpr='hub pull-request -b master'
 
 gprq () {
  hub pull-request -b $1 -a pablitoc -m "$2"
@@ -45,7 +45,7 @@ gitcleanup () {
 
 # Remove a local branch and re-track it from origin
 gfb () {
-  git checkout main
+  git checkout master
   git branch -D $1
   git fetch origin
   git branch --track $1 origin/$1

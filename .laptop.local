@@ -1,6 +1,6 @@
 #!/bin/sh
 
-brew tap homebrew/cask
+#brew tap homebrew/cask
 #brew tap homebrew/versions
 #brew install brew-cask
 
@@ -13,12 +13,15 @@ brew install --appdir="~/Applications" macdown
 brew install --appdir="~/Applications" postman
 brew install --appdir="~/Applications" spotify
 brew install --cask --appdir="~/Applications" visual-studio-code
+brew install --cask microsoft-edge
+brew install --cask bruno
 
 # Link Cask Apps to Alfred
 #brew cask alfred link
 
 brew bundle --file=- <<EOF
-brew "Caskroom/cask/dockertoolbox"
+#brew "Caskroom/cask/dockertoolbox"
+brew "powershell/tap/powershell"
 brew "awscli"
 brew "azure-cli"
 brew "htop"
@@ -26,25 +29,41 @@ brew "jq"
 brew "kops"
 brew "kubernetes-cli"
 brew "kubernetes-helm"
-brew "namebench"
+#brew "namebench"
 brew "nmap"
 brew "packer"
 brew "pgcli"
 brew "zlib"
 brew "aws-iam-authenticator"
 brew "grpcurl"
+brew "poetry"
 EOF
 
-##npm install
-#artillery
-#artillery-engine-grpc
+extension=(
+  "ms-python.python"
+  "ms-python.vscode-pylance"
+  "ms-python.pylint"
+  "42Crunch.vscode-openapi"
+  "ms-vscode.powershell"
+  "eamodio.gitlens"
+  "Boto3typed.boto3-ide"
+  "hashicorp.terraform"
+  "GitHub.copilot"
+  "ms-python.black-formatter"
+  "hbenl.vscode-test-explorer"
+  "bruno-api-client.bruno"
+)
+
+for e in "${extension[@]}"; do
+  code --install-extension $e
+done
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
 #brew cask cleanup
 rm -f -r /Library/Caches/Homebrew/*
 
-gem install aws-mfa
+#gem install aws-mfa
 
 if [ -r "$HOME/.rcrc" ]; then
   fancy_echo "Updating dotfiles ..."
