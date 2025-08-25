@@ -10,6 +10,9 @@ based on what is already installed on the machine.
 Requirements
 ------------
 
+Dynamic Secrets:
+  For dynamic secrets to work you need to install the `1password-cli` (installed by .laptop.local) and configure it to use the ssh-agent extension. Once you have done that you need to run `op signin` that will prompt you to sign in to your desired account. You should make sure you have modified the [get_env.sh](./get_env.sh) script. Then you can run the `get_env` alias and it will create your `.env.local` file that bash sources secrets from.
+
 We support:
 
 * macOS Mavericks (10.9)
