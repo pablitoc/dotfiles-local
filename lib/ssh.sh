@@ -9,15 +9,15 @@ sk () {
   echo "SSH keys successfully created."
 }
 
-cleanknownhost() {
-  sed -i~ "$1 d" ~/.ssh/known_hosts;
+ckhost() {
+  sed -i '' "/$1/d" ~/.ssh/known_hosts;
 }
 
 update_keys () {
-  if [ -r $BOXEN_SRC_DIR/keys/authorized_keys ] ; then
+  if [ -r $HOME/.ssh/keys/authorized_keys ] ; then
     echo "Setting up SSH keys for $1@$2..."
     ssh $1@$2 'mkdir -p ~/.ssh; chmod 700 ~/.ssh'
-    scp $BOXEN_SRC_DIR/keys/authorized_keys $1@$2:.ssh/authorized_keys
+    scp $HOME/.ssh/keys/authorized_keys $1@$2:.ssh/authorized_keys
     ssh $1@$2 'chmod 600 ~/.ssh/authorized_keys'
     echo "SSH keys successfully updated."
   else

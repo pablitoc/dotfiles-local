@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+CONFIG_DIR="${HOME}/.aws/config.d"
+
+jq -s '{accounts: map(.accounts) | add}' "${CONFIG_DIR}"/*.json > "${HOME}/.aws/config.json"
+
+jinja2 ~/.aws/config.j2 "${HOME}/.aws/config.json" -D username=$(whoami) > ~/.aws/config

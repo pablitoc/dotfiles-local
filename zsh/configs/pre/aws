@@ -1,0 +1,21 @@
+prompt_aws_region() {
+  [[ -z "$AWS_REGION" ]] && return
+
+  prompt_segment "$AGNOSTER_AWS_REGION_BG" "$AGNOSTER_AWS_REGION_FG" "R: ${AWS_REGION:gs/%/%%}"
+
+  [[ -z "$AWS_DEFAULT_REGION" ]] && return
+}
+
+prompt_aws_profile() {
+  [[ -z "$AWS_PROFILE" || "$SHOW_AWS_PROMPT" = false ]] && return
+  case "$AWS_PROFILE" in
+    *-prod|*production*) prompt_segment "$AGNOSTER_AWS_PROD_BG" "$AGNOSTER_AWS_PROD_FG"  "AWS: ${AWS_PROFILE:gs/%/%%}" ;;
+    *) prompt_segment "$AGNOSTER_AWS_BG" "$AGNOSTER_AWS_FG" "P: ${AWS_PROFILE:gs/%/%%}" ;;
+  esac
+}
+
+prompt_aws() {
+  prompt_aws_profile
+  prompt_aws_region
+}
+ 

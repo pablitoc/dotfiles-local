@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cat <<EOF | sort -r | fzf
+us-west-2
+us-east-2
+EOF
+ 

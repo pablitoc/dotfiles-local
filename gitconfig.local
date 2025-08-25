@@ -1,6 +1,3 @@
-[user]
-	name = Pablo Castillo
-	email = pablo@castillo.is
 [color]
 	branch = auto
 	diff = auto
@@ -18,3 +15,7 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[credential]
+	helper = manager-core
+# [http]
+# 	sslVerify = false

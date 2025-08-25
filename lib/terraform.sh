@@ -1,11 +1,11 @@
 tftaint () {
 module=$1
-for resource in `terraform show | grep module | tr -d ':'`; do
-  if [[ $resource == "aws"* ]] || [[ $resource == *"tainted"* ]]; then
+for resource in `terraform show | grep $module | tr -d ':' | tr -d '# '`; do
+  if [[ $module.$resource == *"aws"* ]] || [[ $resource == *"tainted"* ]]; then
     if [[ $resource == *"tainted"* ]]; then
       continue
     else
-      terraform taint $module.$resource
+      terraform taint $resource
     fi
   elif [[ $resource != "aws"* ]]; then
     for sub_module in `terraform show | grep module.$module.$resource | tr -d ':' | sed -e "s/module.$module.$resource.//"`; do

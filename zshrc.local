@@ -1,0 +1,52 @@
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+export PATH="$HOME/Applications:/usr/local/opt/openssl/bin:$HOME/dotfiles-local/execs:$HOME/go/bin:$PATH"
+export PATH=$(tenv update-path)
+source $HOME/.tenv.completion.zsh
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
+export SRC_DIR='$HOME/src'
+export DOTFILES_DIR="$HOME/dotfiles-local"
+export EDITOR="atom --wait --new-window"
+export VISUAL="atom --wait --new-window"
+
+export REQUESTS_CA_BUNDLE=$HOME/FA_Root_CA.pem
+export SSL_CERT_FILE=$HOME/FA_Root_CA.pem
+
+## Azure CLI env config
+export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
+export ADAL_PYTHON_SSL_NO_VERIFY=1
+
+source $DOTFILES_DIR/.env.local
+
+export TF_CLI_ARGS_plan="-parallelism=500"
+export TF_CLI_ARGS_destroy="-parallelism=500"
+export TF_CLI_ARGS_apply="-parallelism=500"
+export TF_CLI_ARGS_validate=""
+export TENV_ARCH=arm64
+TENV_AUTO_INSTALL=true
+
+eval "$(nodenv init - --no-rehash)"
+
+if which pyenv &>/dev/null ; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
+
+export PATH="$HOME/.bin:$PATH"
+eval "$(rbenv init - --no-rehash)"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+
+find "$HOME/dotfiles-local/zsh/plugins" -name "*.plugin.zsh" -type f | while read -r plugin; do
+  source "$plugin"
+done

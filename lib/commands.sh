@@ -20,10 +20,22 @@ alias o='open'
 # Open this directory in the finder
 alias od='open .'
 
-alias vscode="open -a Visual\ Studio\ Code.app"
+alias vs="code"
 
 killdock () {
   kill 15 `ps aux | grep -i "[/]System/Library/CoreServices/Dock.app/Contents/MacOS/Dock" | awk '{print $2}'`
+}
+
+bencode (){
+  echo -n "$1"|base64
+}
+
+bdecode (){
+  echo -n "$1"|base64 -D
+}
+
+jwt-decode() {
+  jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
 }
 
 # Tar and Untar direcctories
@@ -63,10 +75,16 @@ alias knh='> ~/.ssh/known_hosts'
 # Need to add user input for interface to renew
 # alias iprenew='sudo ipconfig set en0 DHCP'
 
-makekeys () {
+makekey () {
   # echo "Please enter the Project Name"
   # read projectname
-  ssh-keygen -f $1 -t rsa -b 4096 -C "$2" -N ''
+  ssh-keygen -f ~/.ssh/$1 -t rsa -b 4096 -C "$2" -N ''
+}
+
+makedkey () {
+  # echo "Please enter the Project Name"
+  # read projectname
+  ssh-keygen -f ~/.ssh/$1 -t ed25519 -C "$2" -N ''
 }
 
 catssl () {
@@ -84,4 +102,9 @@ catssl () {
   echo "Concatenating both certificates"
   cat ${CERT} ${BUNDLE} > "${filename}.crt"
   echo "Your certificate is ready!"
+}
+
+poetauth () {
+  cd $SRC_DIR/DeveloperTooling/src/WorkstationMenuing/
+  poetry run python src/menuing.py
 }
