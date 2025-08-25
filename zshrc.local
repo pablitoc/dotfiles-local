@@ -17,6 +17,8 @@ export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
 export ADAL_PYTHON_SSL_NO_VERIFY=1
 
 source $DOTFILES_DIR/.env.local
+git config --global user.name $GIT_AUTHOR_NAME
+git config --global user.email $GIT_AUTHOR_EMAIL
 
 export TF_CLI_ARGS_plan="-parallelism=500"
 export TF_CLI_ARGS_destroy="-parallelism=500"
