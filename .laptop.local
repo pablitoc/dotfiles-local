@@ -7,13 +7,13 @@
 #brew cask install --appdir="~/Applications" 1password
 # brew install --appdir="~/Applications" alfred
 # brew install --appdir="~/Applications" bettertouchtool
+# brew install --appdir="~/Applications" firefox
+# brew install --cask microsoft-edge
 brew install --appdir="~/Applications" atom
-brew install --appdir="~/Applications" firefox
 brew install --appdir="~/Applications" macdown
 brew install --appdir="~/Applications" postman
 brew install --appdir="~/Applications" spotify
 brew install --cask --appdir="~/Applications" visual-studio-code
-brew install --cask microsoft-edge
 brew install --cask bruno
 
 # Link Cask Apps to Alfred
@@ -21,22 +21,37 @@ brew install --cask bruno
 
 brew bundle --file=- <<EOF
 #brew "Caskroom/cask/dockertoolbox"
-brew "powershell/tap/powershell"
+#brew "namebench"
+brew "argocd"
+brew "artillery"
+brew "aws-iam-authenticator"
+brew "awscli"
 brew "awscli"
 brew "azure-cli"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "go"
+brew "goreleaser"
+brew "grpcurl"
+brew "helm"
 brew "htop"
+brew "infisical"
+brew "jfrog-cli"
+brew "jinja2-cli"
 brew "jq"
+brew "k9s"
 brew "kops"
 brew "kubernetes-cli"
 brew "kubernetes-helm"
-#brew "namebench"
+brew "mise"
 brew "nmap"
 brew "packer"
 brew "pgcli"
-brew "zlib"
-brew "aws-iam-authenticator"
-brew "grpcurl"
 brew "poetry"
+brew "powershell/tap/powershell"
+brew "zlib"
+brew "1password-cli"
 EOF
 
 extension=(

@@ -41,11 +41,12 @@ docstop () {
 }
 
 doclogin () {
-  aws ecr get-login-password --region us-west-2 --no-verify-ssl --profile amibstackprod | docker login --username AWS --password-stdin 346334011463.dkr.ecr.us-west-2.amazonaws.com
-}
+  profile=$(_awsp)
+  account=$(aws sts get-caller-identity --query "Account" --output text --profile $profile)
+  aws ecr get-login-password --region us-west-2 --no-verify-ssl --profile $profile | docker login --username AWS --password-stdin $account.dkr.ecr.us-west-2.amazonaws.com
+  ##AWS Account login
+  aws ecr get-login-password --region us-west-2 --no-verify-ssl --profile $profile | docker login --username AWS --password-stdin 602401143452.dkr.ecr.us-west-2.amazonaws.com
 
-docloginfra () {
-  aws ecr get-login-password --region us-west-2 --no-verify-ssl --profile arps-n2-infra-profile | docker login --username AWS --password-stdin 822854964954.dkr.ecr.us-west-2.amazonaws.com
 }
 
 docloginacrp () {
@@ -56,12 +57,17 @@ docloginacrn () {
   az acr login -n ssppans1arpscr1.azurecr.io
 }
 
-
+docloginfaibp () {
+  az acr login -n azuraps1faibcr1.azurecr.io
+}
 
 doclogit () {
-  export CR_PAT="PAT"
+  export CR_PAT=$GH_TOKEN
   echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 }
+
+# https://blog.scottlowe.org/2020/01/25/manually-loading-container-images-with-containerd/
+# ctr image pull docker.io/calico/node:v3.11.2
 
 docdf (){
   docker system df

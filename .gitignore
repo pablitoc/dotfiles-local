@@ -1,1 +1,6 @@
 zshrc.local
+execs/aws-login.py
+execs/pimcli
+execs/prog_auth.sh
+scratch
+.env.local

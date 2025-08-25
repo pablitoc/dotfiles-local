@@ -20,7 +20,7 @@ alias o='open'
 # Open this directory in the finder
 alias od='open .'
 
-alias vs="open -a Visual\ Studio\ Code.app"
+alias vs="code"
 
 killdock () {
   kill 15 `ps aux | grep -i "[/]System/Library/CoreServices/Dock.app/Contents/MacOS/Dock" | awk '{print $2}'`
@@ -32,6 +32,10 @@ bencode (){
 
 bdecode (){
   echo -n "$1"|base64 -D
+}
+
+jwt-decode() {
+  jq -R 'split(".") |.[0:2] | map(@base64d) | map(fromjson)' <<< $1
 }
 
 # Tar and Untar direcctories
@@ -101,6 +105,6 @@ catssl () {
 }
 
 poetauth () {
-  cd '/Users/pacastillo/src/DeveloperTooling/src/WorkstationMenuing/'
+  cd $SRC_DIR/DeveloperTooling/src/WorkstationMenuing/
   poetry run python src/menuing.py
 }

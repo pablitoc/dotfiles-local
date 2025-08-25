@@ -13,3 +13,5 @@ awsmfa () {
     aws-mfa
   fi
 }
+
+alias get_env='bash $DOTFILES_DIR/get_env.sh'

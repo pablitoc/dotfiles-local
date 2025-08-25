@@ -7,6 +7,8 @@ alias k='kubectl'
 alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
 alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 
+alias k9s='k9s --screen-dump-dir \"$HOME/Documents/k9s\" --logoless'
+
 kuse () {
   kubectl config use-context $1
 }
@@ -38,4 +40,9 @@ delcrashedpods () {
 
 helmsearch () {
   helm search repo $1 --versions
+}
+
+ktaints () {
+  # kubectl get nodes -o json | jq '.items[].spec.taints'
+  kubectl get nodes -o json | jq  '.items[] | "\(.metadata.name) \(.spec.taints)"'
 }
