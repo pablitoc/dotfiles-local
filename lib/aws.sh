@@ -16,6 +16,8 @@ _awsp () {
     aws configure list-profiles | grep -v programmatic | fzf --prompt "Choose AWS profile: "
   elif [[ "$1" == "--programmatic" ]]; then
     aws configure list-profiles | grep programmatic | fzf --prompt "Choose AWS profile: "
+  elif [[ "$1" == "--iac" ]]; then
+    aws configure list-profiles | grep iac | fzf --prompt "Choose AWS profile: "
   else
     aws configure list-profiles | fzf --prompt "Choose AWS profile: "
   fi
@@ -62,7 +64,7 @@ awsloginarps() {
 # Usage: ssm <private-dns-name>
 ssm () {
   local PROFILE
-  PROFILE=$(_awsp --programmatic)
+  PROFILE=$(_awsp --iac)
   # If no profile is selected (user cancels), abort
   if [[ -z "$PROFILE" ]]; then
     echo "No AWS Profile selected. Aborting aws-azure-login."
